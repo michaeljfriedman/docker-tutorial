@@ -1,0 +1,44 @@
+Author: Michael Friedman
+
+Big picture
+- Docker Compose + YAML config
+
+  - docker container + Dockerfile
+    - database
+
+  - docker container + Dockerfile
+    - app
+
+------------------------------------
+
+Notes
+
+Docker container
+- An isolated environment, which runs a single process with its own file system and IP address
+- Simulates a separate machine without needing the whole OS underneath. So multiple containers can run on the same machine
+- Comms between containers happens over local network
+- A process can be:
+  - A web server
+  - A database server
+  - ...
+
+Docker also provides
+- Volumes. A shared file system mounted by multiple containers. Used to share files
+- Networks. A local network you can add containers to, so they can comm with each other
+
+In this way, you isolate each of the components of your app:
+- The running process
+- Shared files
+- Shared database
+
+And any of these components can be local or remote. Easy to swap out local database for remote one in the cloud, since they all comm over a network anyway
+
+Network
+-------------------------
+Container
+   IP
+    |       \
+    |        \
+    |         \
+   IP
+Container ----  Volume
